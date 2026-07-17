@@ -1,8 +1,9 @@
 import React from 'react'
+import AsteroidVisualisation from '../AsteroidVisualisation'
 
 function HomePage() {
   return (
-    <div style={{color:"white"}}>Sal</div>
+    <AsteroidVisualisation/>
   )
 }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import EarthComponent, { type EarthProps } from '../EarthComponent'
 import MoonComponent, {type MoonProps} from '../MoonComponent'
 import AsteroidVisualisation from '../AsteroidVisualisation'
@@ -6,6 +6,7 @@ import earthImage from '../../assets/earth.png'
 import moonImage from '../../assets/moon.png'
 import styled from 'styled-components'
 
+const PATH_TO_DATA = '../../../../backend/data';
 
 const Section = styled.section`
   display: flex;
@@ -34,6 +35,36 @@ function HomePage() {
 The result? On Earth we always see the same side of the Moon.`
   }
 
+  const [selectedDate, setSelectedDate] = useState('');
+  const [data, setData] = useState("");
+
+  const handleDateChange = (target: string) => {
+    setSelectedDate(target);
+  };
+
+  const handleSubmitEarth = async () => {
+    if (!selectedDate) {
+      alert('Please select a date!');
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost/epic/${selectedDate}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const resultPath = PATH_TO_DATA + `earth_${selectedDate.toString()}`;
+      setData(resultPath);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setData("");
+    }
+  };
+
+  useEffect(() => {
+    earthProps.image = data;
+  }, [data]);
+
   return (
     <div>
       <section>
@@ -50,8 +81,14 @@ The result? On Earth we always see the same side of the Moon.`
         <p>Start your expedition with us!</p>
 
         <div>
-          <form action="/submit_date_from_user" method="post">
-            <input type="date" id="user_birthday" required/>
+          <form onSubmit={handleSubmitEarth}>
+            <input
+              type="date"
+              id="date"
+              value={selectedDate}
+              onChange={(e) => handleDateChange(e.currentTarget.value)}
+              required
+            />
           </form>
         </div>
       </section>

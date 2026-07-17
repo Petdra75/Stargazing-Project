@@ -1,6 +1,7 @@
 import React from 'react'
 import EarthComponent, { type EarthProps } from '../EarthComponent'
 import MoonComponent, {type MoonProps} from '../MoonComponent'
+import AsteroidVisualisation from '../AsteroidVisualisation'
 import earthImage from '../../assets/earth.png'
 import moonImage from '../../assets/moon.png'
 import styled from 'styled-components'
@@ -11,7 +12,6 @@ const Section = styled.section`
   flex-direction: row;
   flex-wrap: wrap;
 `
-
 function HomePage() {
   const earthProps: EarthProps = {
     image: earthImage,
@@ -54,9 +54,8 @@ The result? On Earth we always see the same side of the Moon.`
             <input type="date" id="user_birthday" required/>
           </form>
         </div>
-
-        
       </section>
+      <AsteroidVisualisation/>
       <Section>
         <h1>The Earth</h1>
         <div>

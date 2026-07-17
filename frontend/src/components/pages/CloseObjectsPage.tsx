@@ -1,7 +1,11 @@
 import React from 'react'
+import AsteroidVisualisation from '../AsteroidVisualisation'
 
 export const CloseObjectsPage = () => {
   return (
-    <div>CloseObjectsPage</div>
+    <>
+   
+    <AsteroidVisualisation/>
+    </>
   )
 }

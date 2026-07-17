@@ -5,7 +5,7 @@ import { CloseObjectsPage } from './components/pages/CloseObjectsPage'
 import { SolarFlarePage } from './components/pages/SolarFlarePage'
 import { SpaceEventsPage } from './components/pages/SpaceEventsPage'
 import { SolarSystemPage } from './components/pages/SolarSystemPage'
-import { MilkyWayPage } from './components/pages/MIlkyWayPage'
+import { MilkyWayPage } from './components/pages/MilkyWayPage'
 import { BigBangPage } from './components/pages/BigBangPage'
 import { SpaceTravelPage } from './components/pages/SpaceTravelPage'
 import { NavBar } from './components/NavBar';

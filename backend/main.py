@@ -1,9 +1,24 @@
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 from src.nasa import *
+
+
 app = FastAPI()
 
 key = "yUYWh31aJxLD1JmUmWcSrpcMts3pMMq5ufqq74pE"
+origins = [
+    "http://localhost:5173",  # The origin for your React app on your local machine/development environment
+    "https://your-production-frontend.com",
+]
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_headers=["Authorization", "Content-Type", "Accept"],
+    max_age=3600,  # Cache preflight response for 1 hour (3600 seconds)
+)
 @app.get("/health")
 async def health():
     return {"status": "ok"}

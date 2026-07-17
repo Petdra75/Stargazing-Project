@@ -1,3 +1,17 @@
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.imageCard {
+  flex: 0;
+}
+
+.paragraphCard {
+  flex: 3;
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
